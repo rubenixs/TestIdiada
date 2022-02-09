@@ -19,7 +19,7 @@ public class Robot extends Graphic{
     
     @Override
     public void draw(Graphics g){
-        g.drawImage(imgGraphic, xCoord, yCoord, 80, 110, null);
+        g.drawImage(imgGraphic, xCoord, yCoord, 30, 40, null);
     }
     
 }

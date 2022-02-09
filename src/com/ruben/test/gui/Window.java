@@ -1,7 +1,10 @@
 package com.ruben.test.gui;
 
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -9,134 +12,152 @@ import javax.swing.JFrame;
  */
 public class Window {
     
-    public Window(){
+    public static JButton botonEnviar;
+    public static JTextArea instrucciones;
+    public static JLabel etiqueta;
+    public static String instruccionesLeidas[];
+    public static int tamanoX;
+    public static int tamanoY;
+    public static int xR;
+    public static int yR;
+    public static String posInicialR;
+    public static String posFinalR;
+    public static String instrR;
+    public static int xR2;
+    public static int yR2;
+    public static String posInicialR2;
+    public static String posFinalR2;
+    public static String instrR2;
+   
+    
+    public Window(int t1, int t2,int x1, int y1, String posic1, String posicF1, String param1,
+            int x2, int y2, String posic2, String posicF2, String param2){
         
         JFrame ventana = new JFrame();
-        ventana.add(new VisualManager());
-        ventana.setSize(1000, 1000);
+        System.out.println("Tamaño del lienzo " + t1 + " " + t2);
+        ventana.add(new VisualManager(t1,t2,x1,y1,x2,y2));
+        ventana.setSize(600, 600);
         ventana.setVisible(true);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
     public static void main(String[] args) {
-        Window ventana = new Window();
-        
-       
-        
+        AskParam ask = new AskParam();
+    
     } // Termina el main
     
-    public void calcularPosicion(){
+    public static void calcularPosicion(int x2X,int y2Y, String posInicialX, String instrX){
          // x robot
-        int x2 = 1;
+        xR = x2X;
         // y robot
-        int y2 = 2;
+        yR = y2Y;
         // posicion robot
-        String posInicial = "N";
+        posInicialR = posInicialX;
         // posicion final robot
-        String posFinal = "";
+        posFinalR = "";
         //instrucciones
-        String instr = "LMLMLMLMM";
+        instrR = instrX;
         
         //longitud instrucciones
-        int longTotal = instr.length();
+        int longTotal = instrR.length();
 
         for (int i=0; i < longTotal;i++){
                
-                    switch (instr.substring(i,i+1)) {
+                    switch (instrR.substring(i,i+1)) {
                             case "L":
     //                               
-                                    if(posInicial.equals("N") && i==0){
-                                        posFinal = "Izquierda";
+                                    if(posInicialR.equals("N") && i==0){
+                                        posFinalR = "Izquierda";
                                     }
-                                    if(posInicial.equals("E") && i==0){
-                                        posFinal = "Arriba";
+                                    if(posInicialR.equals("E") && i==0){
+                                        posFinalR = "Arriba";
                                     }
-                                    if(posInicial.equals("S") && i==0){
-                                        posFinal = "Derecha";
+                                    if(posInicialR.equals("S") && i==0){
+                                        posFinalR = "Derecha";
                                     }
-                                    if(posInicial.equals("O") && i==0){
-                                        posFinal = "Abajo";
+                                    if(posInicialR.equals("O") && i==0){
+                                        posFinalR = "Abajo";
                                     }
 
                                     // Cuando ya ha comenzado
-                                    if(posFinal.equals("Arriba") && i!=0){
-                                        posFinal = "Izquierda";
+                                    if(posFinalR.equals("Arriba") && i!=0){
+                                        posFinalR = "Izquierda";
                                         break;
                                     }
-                                     if(posFinal.equals("Derecha") && i!=0){
-                                        posFinal = "Arriba";
+                                     if(posFinalR.equals("Derecha") && i!=0){
+                                        posFinalR = "Arriba";
                                         break;
                                     }
-                                      if(posFinal.equals("Abajo") && i!=0){
-                                        posFinal = "Derecha";
+                                      if(posFinalR.equals("Abajo") && i!=0){
+                                        posFinalR = "Derecha";
                                         break;
                                     }
-                                       if(posFinal.equals("Izquierda") && i!=0){
-                                        posFinal = "Abajo";
+                                       if(posFinalR.equals("Izquierda") && i!=0){
+                                        posFinalR = "Abajo";
                                         break;
                                     }
                                     break;
                             case "M":
-                                   if(posInicial.equals("N") && i==0){
-                                        y2++;
-                                        posFinal="Arriba";
+                                   if(posInicialR.equals("N") && i==0){
+                                        yR++;
+                                        posFinalR="Arriba";
                                     }
-                                    if(posInicial.equals("E") && i==0){
-                                        x2++;
-                                        posFinal="Derecha";
+                                    if(posInicialR.equals("E") && i==0){
+                                        xR++;
+                                        posFinalR="Derecha";
                                     }
-                                    if(posInicial.equals("S") && i==0){
-                                       y2--;
-                                       posFinal="Abajo";
+                                    if(posInicialR.equals("S") && i==0){
+                                       yR--;
+                                       posFinalR="Abajo";
                                     }
-                                    if(posInicial.equals("O") && i==0){
-                                        x2--;
-                                        posFinal="Izquierda";
+                                    if(posInicialR.equals("O") && i==0){
+                                        xR--;
+                                        posFinalR="Izquierda";
                                     }
 
                                     // Cuando ya ha comenzado
-                                    if(posFinal.equals("Izquierda") && i!=0){
-                                        x2--;
+                                    if(posFinalR.equals("Izquierda") && i!=0){
+                                        xR--;
                                     }
-                                    if(posFinal.equals("Derecha") && i!=0){
-                                        x2++;
+                                    if(posFinalR.equals("Derecha") && i!=0){
+                                        xR++;
                                     }
-                                    if(posFinal.equals("Arriba") && i!=0){
-                                        y2++;
+                                    if(posFinalR.equals("Arriba") && i!=0){
+                                        yR++;
                                     }
-                                    if(posFinal.equals("Abajo") && i!=0){
-                                        y2--;
+                                    if(posFinalR.equals("Abajo") && i!=0){
+                                        yR--;
                                     }
                                     break;
                             case "R":
-                                    if(posInicial.equals("N") && i==0){
-                                        posFinal = "Derecha";
+                                    if(posInicialR.equals("N") && i==0){
+                                        posFinalR = "Derecha";
                                     }
-                                    if(posInicial.equals("E") && i==0){
-                                        posFinal = "Abajo";
+                                    if(posInicialR.equals("E") && i==0){
+                                        posFinalR = "Abajo";
                                     }
-                                    if(posInicial.equals("S") && i==0){
-                                        posFinal = "Izquierda";
+                                    if(posInicialR.equals("S") && i==0){
+                                        posFinalR = "Izquierda";
                                     }
-                                    if(posInicial.equals("O") && i==0){
-                                        posFinal = "Arriba";
+                                    if(posInicialR.equals("O") && i==0){
+                                        posFinalR = "Arriba";
                                     }
 
                                     // Cuando ya ha comenzado
-                                    if(posFinal.equals("Arriba") && i!=0){
-                                        posFinal = "Derecha";
+                                    if(posFinalR.equals("Arriba") && i!=0){
+                                        posFinalR = "Derecha";
                                         break;
                                     }
-                                     if(posFinal.equals("Derecha") && i!=0){
-                                        posFinal = "Abajo";
+                                     if(posFinalR.equals("Derecha") && i!=0){
+                                        posFinalR = "Abajo";
                                         break;
                                     }
-                                      if(posFinal.equals("Abajo") && i!=0){
-                                        posFinal = "Izquierda";
+                                      if(posFinalR.equals("Abajo") && i!=0){
+                                        posFinalR = "Izquierda";
                                         break;
                                     }
-                                       if(posFinal.equals("Izquierda") && i!=0){
-                                        posFinal = "Arriba";
+                                       if(posFinalR.equals("Izquierda") && i!=0){
+                                        posFinalR = "Arriba";
                                         break;
                                     }
                                     break;

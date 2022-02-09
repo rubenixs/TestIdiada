@@ -18,13 +18,14 @@ public class VisualManager extends JPanel{
     
     private ArrayList<Graphic> graphicList;
     
-    public VisualManager(){
-        setSize(500, 500);
+    public VisualManager(int x, int y, int xR, int yR, int xR2, int yR2){
+        setSize(x, y);
         setBackground(Color.white);
         
         graphicList = new ArrayList<Graphic>();
        
-        graphicList.add(new Robot(900, 10));
+        graphicList.add(new Robot(xR, yR));
+        graphicList.add(new Robot(xR2, yR2));
         
         
        
