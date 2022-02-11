@@ -9,8 +9,11 @@ import javax.swing.ImageIcon;
  */
 public class Robot extends Graphic{
     
-    public Robot(int x, int y) {
-        super(x, y);
+
+    
+    public Robot(int x, int y,String n) {
+ 
+        super(x, y, n);
         icon = new ImageIcon(getClass().getResource("/images/robot.png"));
         imgGraphic = icon.getImage();
     }
@@ -19,7 +22,7 @@ public class Robot extends Graphic{
     
     @Override
     public void draw(Graphics g){
-        g.drawImage(imgGraphic, xCoord, yCoord, 30, 40, null);
-    }
-    
+        g.drawImage(imgGraphic, xCoord, yCoord, 10, 10, null);
+        
+    }    
 }

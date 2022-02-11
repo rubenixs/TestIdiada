@@ -85,18 +85,11 @@ public class AskParam extends JFrame implements ActionListener{
         //Recogemos la posicion inicial del Robot2
         Window.posInicialR2 = splitedPosicionRobot2[2];
         
-        System.out.println("Tamaño x + y"+Window.tamanoX + " " + Window.tamanoY);
-        System.out.println("Tamaño R1 x + y" + Window.xR + " " + Window.yR);
-        System.out.println("Instrucciones R1 "+ Window.instrR);
-        
-        System.out.println("Tamaño x + y"+Window.tamanoX + " " + Window.tamanoY);
-        System.out.println("Tamaño R2 x + y" + Window.xR2 + " " + Window.yR2);
-        System.out.println("Instrucciones R2 "+ Window.instrR2);
          this.setVisible(false);
          // HAY QUE LLAMAR AL METODO WINDOW CALCULAR POSICION Y PASARLE PARAM A WINDOW PARA HACER EL VISUAL MANAGER DEL ROBOT
          Window ventana = new Window(Window.tamanoX, Window.tamanoY,
-            Window.xR, Window.yR, Window.posInicialR, Window.posFinalR, Window.instrR,
-            Window.xR2, Window.yR2, Window.posInicialR2, Window.posInicialR2, Window.instrR2);
+            Window.xR, Window.yR, Window.posInicialR, Window.instrR,
+            Window.xR2, Window.yR2, Window.posInicialR2, Window.instrR2);
          
          
     }

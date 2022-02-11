@@ -16,8 +16,10 @@ public class Graphic {
     protected ImageIcon icon;
     protected int xCoord;
     protected int yCoord;
+    protected String nombre;
     
-    public Graphic(int x, int y){
+    public Graphic(int x, int y,String n){
+        nombre = n;
         xCoord = x;
         yCoord = y;
    }
@@ -26,8 +28,19 @@ public class Graphic {
     
     public void draw(Graphics g){
         if(imgGraphic != null){
-            g.drawImage(imgGraphic, xCoord, yCoord, 80, 100, null);
+            g.drawImage(imgGraphic, xCoord, yCoord, 10, 10, null);
         }
     }
+
+    public void move(int xR, int yR) {
+        xCoord = xR;
+        yCoord = yR;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+    
+    
     
 }
